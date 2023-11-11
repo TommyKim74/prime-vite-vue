@@ -29,7 +29,7 @@
 
   <div
     class="bg-gray-900 py-2 px-6 shadow-2 flex align-items-center justify-content-between relative lg:static border-bottom-1 border-gray-800"
-    style="min-height: 80px"
+    style="min-height: 70px"
   >
     <div class="flex-1initial mr-8">
       <p class="font-bold text-white text-2xl w-max mr-5">설비 통합 모니터링</p>

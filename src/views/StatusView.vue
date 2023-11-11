@@ -5,7 +5,7 @@
     </div>
     <div class="flex h-full">
       <div class="flex-none" style="width: 270px">
-        <LeftMenu></LeftMenu>
+        <StatusMenu></StatusMenu>
       </div>
       <div class="flex h-full w-full p-2">
         <div class="p-1 w-full surface-section">
@@ -122,13 +122,17 @@
                       <Divider></Divider>
                       <ul class="pt-0 px-5 mt-0">
                         <li class="line-height-4 border-bottom-1 border-100">
-                          유형 :
+                          유형 : RECYCLE GAS COMPRESSOR
                         </li>
-                        <li class="line-height-4">번호 :</li>
-                        <li class="line-height-4">위치 :</li>
-                        <li class="line-height-4">담당 :</li>
-                        <li class="line-height-4">제작회사 :</li>
-                        <li class="line-height-4">구매일자/설치일자 :</li>
+                        <li class="line-height-4">번호 : 87-K-201</li>
+                        <li class="line-height-4">
+                          위치 : No.4 DHDS (34.85, 127.69)
+                        </li>
+                        <li class="line-height-4">담당 : 홍길동 엔지니어</li>
+                        <li class="line-height-4">제작회사 : ELLIOTT EBARA</li>
+                        <li class="line-height-4">
+                          구매일자/설치일자 : 2008 / 2008.11.17
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -141,16 +145,9 @@
                       </div>
                       <Divider></Divider>
                       <ul class="pt-0 px-5 mt-0">
+                        <li class="line-height-4">Desulfuized</li>
                         <li class="line-height-4">
-                          Mobile : AM-OLED/LTPS Patterning
-                        </li>
-                        <li class="line-height-4">
-                          TV : TFT-LCD, AM-OLED/LTPS Patterning a-Si, p-Si,
-                          Oxdie TFT, LTPS All layer
-                        </li>
-                        <li class="line-height-4">
-                          Mass Prodution line : Gen.2, 5, 5.5, H6, 6, 8 ,10.5,
-                          11
+                          Naphtha, Kerosene, Diesel, VGO, AR, VR
                         </li>
                       </ul>
                     </div>
@@ -175,7 +172,7 @@
 
 <script setup>
 import TopMenu from '@/layouts/TopMenu.vue';
-import LeftMenu from '@/layouts/LeftMenu.vue';
+import StatusMenu from '@/layouts/StatusMenu.vue';
 import StatusEchart from '@/views/chart/StatusEchart.vue';
 
 import { ref } from 'vue';
