@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import StatusView from '@/views/StatusView.vue';
+import PerformanceView from '@/views/PerformanceView.vue';
+import EventsView from '@/views/EventsView.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -17,6 +19,16 @@ const router = createRouter({
       path: '/status',
       name: 'status',
       component: StatusView,
+    },
+    {
+      path: '/performance',
+      name: 'performance',
+      component: PerformanceView,
+    },
+    {
+      path: '/event',
+      name: 'event',
+      component: EventsView,
     },
   ],
 });
