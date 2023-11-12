@@ -34,7 +34,7 @@
           <!--페이지 타이틀-->
           <!--필터-->
           <div
-            class="flex justify-content-between align-items-center surface-border border-round shadow-1 mt-2 px-5 mx-3"
+            class="flex justify-content-between align-items-center surface-border border-round shadow-1 mt-2 px-5 mx-5 mt-2"
           >
             <div class="flex justify-content-start surface-card gap-3">
               <div class="m-2 py-3">
@@ -126,14 +126,14 @@
           <!--필터-->
 
           <!--상태카드-->
-          <div class="grid grid-nogutter">
+          <div class="grid grid-nogutter mt-3 px-3">
             <div class="col-12 md:col-6 lg:col-3 p-3">
               <div
-                class="bg-yellow-50 text-center p-4 border-round flex justify-content-between shadow-1"
+                class="bg-yellow-50 text-center px-5 py-4 border-round flex justify-content-between shadow-1"
               >
-                <div class="flex flex-column justify-content-between p-3">
+                <div class="flex flex-column justify-content-center p-3">
                   <div class="px-3">
-                    <span class="text-yellow-700 text-4xl font-semibold mr-2"
+                    <span class="text-yellow-700 text-6xl font-semibold mr-2"
                       >대기</span
                     >
                     <span
@@ -141,9 +141,9 @@
                       >Standby</span
                     >
                   </div>
-                  <div class="flex px-3 mt-1">
+                  <!-- <div class="flex px-3 mt-1">
                     <Button label="W/O 조회" severity="secondary" />
-                  </div>
+                  </div> -->
                 </div>
                 <div
                   class="text-900 text-7xl font-bold felx justify-content-center align-content-center align-items-center text-yellow-600 py-4"
@@ -156,11 +156,11 @@
 
             <div class="col-12 md:col-6 lg:col-3 p-3">
               <div
-                class="bg-purple-50 text-center p-4 border-round flex justify-content-between shadow-1"
+                class="bg-purple-50 text-center px-5 py-4 border-round flex justify-content-between shadow-1"
               >
-                <div class="flex flex-column justify-content-between p-3">
+                <div class="flex flex-column justify-content-center p-3">
                   <div class="px-3">
-                    <span class="text-purple-700 text-4xl font-semibold mr-2"
+                    <span class="text-purple-700 text-6xl font-semibold mr-2"
                       >분석</span
                     >
                     <span
@@ -168,9 +168,9 @@
                       >Analysis</span
                     >
                   </div>
-                  <div class="flex px-3 mt-1">
+                  <!-- <div class="flex px-3 mt-1">
                     <Button label="W/O 조회" severity="secondary" />
-                  </div>
+                  </div> -->
                 </div>
                 <div
                   class="text-900 text-7xl font-bold felx justify-content-center align-content-center align-items-center text-purple-600 py-4"
@@ -183,11 +183,11 @@
 
             <div class="col-12 md:col-6 lg:col-3 p-3">
               <div
-                class="bg-gray-50 text-center p-4 border-round flex justify-content-between shadow-1"
+                class="bg-gray-50 text-center px-5 py-4 border-round flex justify-content-between shadow-1"
               >
-                <div class="flex flex-column justify-content-between p-3">
+                <div class="flex flex-column justify-content-center p-3">
                   <div class="px-3">
-                    <span class="text-gray-700 text-4xl font-semibold mr-2"
+                    <span class="text-gray-700 text-6xl font-semibold mr-2"
                       >조치</span
                     >
                     <span
@@ -195,9 +195,9 @@
                       >Action</span
                     >
                   </div>
-                  <div class="flex px-3 mt-1">
+                  <!-- <div class="flex px-3 mt-1">
                     <Button label="W/O 조회" severity="secondary" />
-                  </div>
+                  </div> -->
                 </div>
                 <div
                   class="text-900 text-7xl font-bold felx justify-content-center align-content-center align-items-center text-gray-600 py-4"
@@ -210,11 +210,11 @@
 
             <div class="col-12 md:col-6 lg:col-3 p-3">
               <div
-                class="bg-teal-50 text-center p-4 border-round flex justify-content-between shadow-1"
+                class="bg-teal-50 text-center px-5 py-4 border-round flex justify-content-between shadow-1"
               >
-                <div class="flex flex-column justify-content-between p-3">
+                <div class="flex flex-column justify-content-center p-3">
                   <div class="px-3">
-                    <span class="text-teal-700 text-4xl font-semibold mr-2"
+                    <span class="text-teal-700 text-6xl font-semibold mr-2"
                       >완료</span
                     >
                     <span
@@ -222,9 +222,9 @@
                       >Complete</span
                     >
                   </div>
-                  <div class="flex px-3 mt-1">
+                  <!-- <div class="flex px-3 mt-1">
                     <Button label="W/O 조회" severity="secondary" />
-                  </div>
+                  </div> -->
                 </div>
                 <div
                   class="text-900 text-7xl font-bold felx justify-content-center align-content-center align-items-center text-teal-600 py-4"
@@ -238,12 +238,136 @@
           <!--상태카드-->
 
           <!--테이블-->
-          <div class="surface py-2 mx-3">
-            <DataTable :value="products" tableStyle="min-width: 50rem">
-              <Column field="code" header="Code"></Column>
-              <Column field="name" header="Name"></Column>
-              <Column field="category" header="Category"></Column>
-              <Column field="quantity" header="Quantity"></Column>
+          <div class="surface py-3 mx-5">
+            <DataTable
+              :value="events"
+              paginator
+              :rows="5"
+              :rowsPerPageOptions="[5, 10, 20, 50]"
+              stripedRows
+              paginatorTemplate="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink RowsPerPageDropdown"
+              currentPageReportTemplate="{first} to {last} of {totalRecords}"
+            >
+              <Column
+                field="team"
+                header="생산팀"
+                headerStyle="text-align:center;width=100px"
+              ></Column>
+              <Column
+                field="system"
+                header="시스템"
+                headerStyle="text-align:center"
+                bodyStyle="text-align:center"
+              ></Column>
+              <Column
+                field="alertStatus"
+                header="Alarm 상태"
+                headerStyle="text-align:center"
+              >
+                <template #body="{ data }">
+                  <div
+                    v-if="data.alertStatus == '완료'"
+                    class="flex justify-content-center align-content-center flex-wrap card-container"
+                  >
+                    <Tag
+                      severity="success"
+                      value="완료"
+                      class="bg-teal-40 border-teal-400 text-white w-5"
+                    ></Tag>
+                  </div>
+                  <div
+                    v-else-if="data.alertStatus == '대기'"
+                    class="flex justify-content-center align-content-center flex-wrap card-container"
+                  >
+                    <Tag
+                      severity="warning"
+                      value="대기"
+                      class="bg-yellow-400 border-yellow-400 text-white w-5"
+                    ></Tag>
+                  </div>
+                  <div
+                    v-else-if="data.alertStatus == '분석'"
+                    class="flex justify-content-center align-content-center flex-wrap card-container"
+                  >
+                    <Tag
+                      severity="danger"
+                      value="분석"
+                      class="bg-purple-400 border-purple-400 text-white w-5"
+                    ></Tag>
+                  </div>
+                  <div
+                    v-else
+                    class="flex justify-content-center align-content-center flex-wrap card-container"
+                  >
+                    <Tag
+                      value="조치"
+                      class="bg-gray-400 border-gray-400 text-white w-5"
+                    ></Tag>
+                  </div>
+                </template>
+              </Column>
+              <Column
+                field="occDt"
+                header="발생일자"
+                headerStyle="text-align:center"
+                bodyStyle="text-align:center"
+              ></Column>
+              <Column
+                field="equipId"
+                header="설비번호"
+                headerStyle="text-align:center"
+                bodyStyle="text-align:center"
+              ></Column>
+              <Column
+                field="equipStatus"
+                header="설비상태"
+                headerStyle="text-align:center"
+                bodyStyle="text-align:center"
+              ></Column>
+              <Column
+                field="alertType"
+                header="Alarm 유형"
+                headerStyle="text-align:center"
+                bodyStyle="text-align:center"
+              ></Column>
+              <Column
+                field="importance"
+                header="중요도"
+                headerStyle="text-align:center"
+                bodyStyle="text-align:center"
+              >
+                <template #body="{ data }">
+                  <div
+                    class="flex justify-content-center align-content-center align-items-center px-5"
+                  >
+                    <Tag
+                      v-if="data.importance == 'High'"
+                      severity="danger"
+                      value="High"
+                      :style="{ width: '50px' }"
+                    ></Tag>
+                    <Tag
+                      v-else-if="data.importance == 'Mid'"
+                      severity="warning"
+                      value="Middle"
+                      :style="{ width: '50px' }"
+                    >
+                    </Tag>
+                    <Tag
+                      v-else
+                      severity="info"
+                      value="Low"
+                      :style="{ width: '50px' }"
+                    ></Tag>
+                  </div>
+                </template>
+              </Column>
+              <Column
+                field="report"
+                header="조치 Report"
+                headerStyle="text-align:center"
+                bodyStyle="text-align:center"
+              ></Column>
             </DataTable>
           </div>
           <!--테이블-->
@@ -257,23 +381,24 @@
 import TopMenu from '@/layouts/TopMenu.vue';
 import EventsMenu from '@/layouts/EventsMenu.vue';
 import { ref, onMounted } from 'vue';
-import { ProductService } from '@/service/ProductService';
+import { EventService } from '@/service/EventService';
 
-const selectSearchDate2 = ref('2023-11-01');
+const events = ref();
+const selectSearchDate2 = ref('2023-10-01');
 const selectSearchDate3 = ref('2023-11-30');
 
 onMounted(() => {
-  ProductService.getProductsSmall().then(data => (products.value = data));
+  EventService.getEventSmall().then(data => (events.value = data));
 });
-
-const products = ref();
 </script>
 <style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+.headerClass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+}
+.p-datatable .p-column-header-content {
+  display: inline !important;
 }
 </style>

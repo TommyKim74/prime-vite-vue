@@ -36,7 +36,7 @@
           <!--필터-->
 
           <div
-            class="flex justify-content-between align-items-center surface-border border-round shadow-1 mt-2 px-5 mx-3"
+            class="flex justify-content-between align-items-center surface-border border-round shadow-1 mt-2 px-5 mx-5"
           >
             <div class="flex justify-content-start surface-card gap-3">
               <div class="m-2 py-3">
@@ -138,7 +138,7 @@
           </div>
           <!--필터-->
           <!--효울-->
-          <div class="mt-5 mx-5">
+          <div class="mt-5 mx-7">
             <div class="grid mb-2">
               <div class="col-12 md:col-3 p-4">
                 <div class="shadow-2 surface-card border-round p-4 h-full">

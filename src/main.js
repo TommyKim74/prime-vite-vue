@@ -64,6 +64,9 @@ import Fieldset from 'primevue/fieldset';
 import DynamicDialog from 'primevue/dynamicdialog';
 import DialogService from 'primevue/dialogservice';
 
+//common js
+import Cmm from '@/util/Cmm.js';
+
 const app = createApp(App);
 
 app.use(createPinia());
@@ -73,6 +76,8 @@ app.use(PrimeVue, { ripple: true });
 app.use(ToastService);
 app.use(ConfirmationService);
 app.use(DialogService);
+
+app.config.globalProperties.$cmm = Cmm;
 
 app.component('Accordion', Accordion);
 app.component('AccordionTab', AccordionTab);

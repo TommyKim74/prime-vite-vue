@@ -33,7 +33,7 @@
 
           <!--필터-->
           <div
-            class="flex flex-column card-container surface-border border-round shadow-1 px-5 py-4 row-gap-3 m-3"
+            class="flex flex-column card-container surface-border border-round shadow-1 px-5 py-4 row-gap-3 my-3 mx-5"
           >
             <div class="flex justify-content-between align-items-center px-4">
               <div class="flex justify-content-start surface-card column-gap-4">
@@ -92,7 +92,7 @@
           <!--필터-->
 
           <!--기본정보-->
-          <div class="card mx-3 my-5">
+          <div class="card mx-5 my-5">
             <div class="flex flex-column card-container">
               <Fieldset
                 legend="Equipment Basic Information"
@@ -158,7 +158,7 @@
           </div>
           <!--기본정보-->
           <!--차트-->
-          <Fieldset legend="Equipment Status" class="shadow-1 p-3 mx-3">
+          <Fieldset legend="Equipment Status" class="shadow-1 p-3 mx-5">
             <div>
               <StatusEchart></StatusEchart>
             </div>

@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import StatusView from '@/views/StatusView.vue';
 import PerformanceView from '@/views/PerformanceView.vue';
 import EventsView from '@/views/EventsView.vue';
+import HistoryView from '@/views/HistoryView.vue';
+import PredictionView from '@/views/PredictionView.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -29,6 +31,16 @@ const router = createRouter({
       path: '/event',
       name: 'event',
       component: EventsView,
+    },
+    {
+      path: '/history',
+      name: 'history',
+      component: HistoryView,
+    },
+    {
+      path: '/prediction',
+      name: 'prediction',
+      component: PredictionView,
     },
   ],
 });

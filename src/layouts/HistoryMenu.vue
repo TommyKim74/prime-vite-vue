@@ -71,7 +71,7 @@
 
 <script setup>
 import { ref } from 'vue';
-const activeTab1 = ref(0);
+const activeTab1 = ref(1);
 </script>
 
 <style lang="scss" scoped></style>
