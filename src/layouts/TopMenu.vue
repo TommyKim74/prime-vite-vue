@@ -45,7 +45,7 @@
             v-ripple
             class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-gray-400 hover:text-white hover:bg-gray-800 font-medium border-round cursor-pointer transition-colors transition-duration-150 p-ripple"
           >
-            <i class="pi pi-home mr-2"></i>
+            <i class="pi pi-desktop mr-2"></i>
             <span class="font-bold">설비운전상태</span>
           </a>
         </li>
@@ -54,7 +54,7 @@
             v-ripple
             class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-gray-400 hover:text-white hover:bg-gray-800 font-medium border-round cursor-pointer transition-colors transition-duration-150 p-ripple"
           >
-            <i class="pi pi-users mr-2"></i>
+            <i class="pi pi-th-large mr-2"></i>
             <span class="font-bold">설비운전성능</span>
           </a>
         </li>
@@ -63,7 +63,7 @@
             v-ripple
             class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-gray-400 hover:text-white hover:bg-gray-800 font-medium border-round cursor-pointer transition-colors transition-duration-150 p-ripple"
           >
-            <i class="pi pi-calendar mr-2"></i>
+            <i class="pi pi-chart-bar mr-2"></i>
             <span class="font-bold">이상발생실적</span>
           </a>
         </li>
@@ -81,7 +81,7 @@
             v-ripple
             class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-gray-400 hover:text-white hover:bg-gray-800 font-medium border-round cursor-pointer transition-colors transition-duration-150 p-ripple"
           >
-            <i class="pi pi-chart-line mr-2"></i>
+            <i class="pi pi-database mr-2"></i>
             <span class="font-bold">이상조치실적</span>
           </a>
         </li>
@@ -124,6 +124,10 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const props = defineProps({
+  id: '0',
+});
+</script>
 
 <style lang="scss" scoped></style>
