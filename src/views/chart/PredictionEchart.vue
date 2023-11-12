@@ -37,7 +37,8 @@
           class="col-fixed flex justify-content-center align-content-center align-items-center text-lg font-medium"
           style="width: 200px"
         >
-          {{ chart1.paramNm }}
+          <!-- {{ chart1.paramNm }} -->
+          Shaft Vibration
         </div>
         <div
           class="col-fixed flex justify-content-center align-content-center align-items-center text-lg font-medium"
@@ -67,7 +68,8 @@
           class="col-fixed flex justify-content-center align-content-center align-items-center text-lg font-medium"
           style="width: 200px"
         >
-          {{ chart2.paramNm }}
+          <!-- {{ chart2.paramNm }} -->
+          Motor Current
         </div>
         <div
           class="col-fixed flex justify-content-center align-content-center align-items-center text-lg font-medium"
@@ -97,7 +99,8 @@
           class="col-fixed flex justify-content-center align-content-center align-items-center text-lg font-medium"
           style="width: 200px"
         >
-          {{ chart3.paramNm }}
+          <!-- {{ chart3.paramNm }} -->
+          IGV Position
         </div>
         <div
           class="col-fixed flex justify-content-center align-content-center align-items-center text-lg font-medium"
@@ -135,7 +138,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, getCurrentInstance } from 'vue';
+import { ref, onMounted  } from 'vue';
 import VChart from 'vue-echarts';
 import { use } from 'echarts/core';
 
@@ -166,7 +169,6 @@ use([
   MarkLineComponent,
 ]);
 
-
 const props = defineProps({
   chart1: Object,
   chart2: Object,
@@ -179,76 +181,23 @@ const option1 = ref();
 const option2 = ref();
 const option3 = ref();
 
-// const dateList = (list, parameter) => {
-//   return list.filter(x => x.parameter == parameter).map(x => x.date);
-// };
-
-// const valueList = (list, parameter) => {
-//   return list.filter(x => x.parameter == parameter).map(x => x.value);
-// };
 
 watchEffect(() => {
   if (props.chart1) {
-    option1.value = getChartOption(
-      props.chart1.paramNm,
-      props.days,
-      props.chart1.paramVal.slice(props.eventDay, props.eventDay + 40),
-      {},
-      false,
-      true,
-    );
-  }
+    let labelValue1 = '';
+    let labelValue2 = '';
+    let labelPoint = [];
 
-  if (props.chart2) {
-    option2.value = getChartOption(
-      props.chart2.paramNm,
-      props.days,
-      props.chart2.paramVal.slice(props.eventDay, props.eventDay + 40),
-      { color: '#91CC75' },
-    );
-  }
-
-  if (props.chart3) {
-    option3.value = getChartOption(
-      props.chart3.paramNm,
-      props.days,
-      props.chart3.paramVal.slice(props.eventDay, props.eventDay + 40),
-      { color: '#FAC858' },
-      true,
-      false,
-    );
-  }
-});
-
-const getChartOption = (
-  seriesName,
-  xAxisData,
-  yAxisData,
-  lineStyleData,
-  isLabelPrint = false,
-  isPointPrint = false,
-) => {
-  let labelValue1 = '';
-  let labelValue2 = '';
-  let labelPoint = [];
-
-  if (isLabelPrint) {
-    labelValue1 = props.days[38];
-    labelValue2 = props.days[53];
-  }
-
-  if (isPointPrint) {
     labelPoint = [
       {
         name: 'point',
         value: 'Estimated Failure',
         xAxis: props.days[53],
         yAxis: 'max',
-      },
-    ];
-  }
+      },      
+    ];  
 
-  return {
+    option1.value = {
     tooltip: {
       trigger: 'axis',
     },
@@ -262,7 +211,7 @@ const getChartOption = (
     xAxis: {
       type: 'category',
       boundaryGap: false,
-      data: xAxisData,
+      data: props.days,
       show: false,
     },
     yAxis: {
@@ -273,11 +222,11 @@ const getChartOption = (
     },
     series: [
       {
-        name: seriesName,
+        name: props.chart1.paramNm,
         type: 'line',
-        data: yAxisData,
+        data: props.chart1.paramVal.slice(props.eventDay, props.eventDay + 40),
         symbol: 'none',
-        lineStyle: lineStyleData,
+        lineStyle: {},
         markPoint: {
           symbol: 'rect',
           symbolSize: [130, 30],
@@ -350,8 +299,246 @@ const getChartOption = (
         },
       },
     ],
-  };
-};
+  };  
+  }
+
+  if (props.chart2) {
+
+    let labelValue1 = '';
+    let labelValue2 = '';
+    let labelPoint = [];
+
+    option2.value = {
+    tooltip: {
+      trigger: 'axis',
+    },
+    grid: {
+      top: 23,
+      right: '30',
+      left: '40',
+      width: 'auto',
+      height: 80,
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: props.days,
+      show: false,
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value}',
+      },
+    },
+    series: [
+      {
+        name: props.chart2.paramNm,
+        type: 'line',
+        data: props.chart2.paramVal.slice(props.eventDay, props.eventDay + 40),
+        symbol: 'none',
+        lineStyle: { color: '#91CC75' },
+        markPoint: {
+          symbol: 'rect',
+          symbolSize: [130, 30],
+          padding: [1, 1, 1, 1],
+          data: labelPoint,
+        },
+        markLine: {
+          lineStyle: {
+            type: 'dashed',
+            color: 'red',
+          },
+          data: [
+            [
+              {
+                xAxis: props.days[38],
+                yAxis: 'min',
+                symbol: 'none',
+                silent: true,
+              },
+              {
+                xAxis: props.days[38],
+                yAxis: 'max',
+                label: {
+                  normal: {
+                    show: true,
+                    position: 'start',
+                    formatter: labelValue1,
+                    color: 'black',
+                    distance: 10,
+                  },
+                },
+                lineStyle: {
+                  width: '3',
+                  color: 'black',
+                },
+                symbol: 'none',
+                silent: true,
+                formatter: 'max',
+              },
+            ],
+            [
+              {
+                xAxis: props.days[53],
+                yAxis: 'min',
+                symbol: 'none',
+                silent: true,
+              },
+              {
+                xAxis: props.days[53],
+                yAxis: 'max',
+                label: {
+                  normal: {
+                    show: true,
+                    position: 'start',
+                    formatter: labelValue2,
+                    color: 'red',
+                    distance: 10,
+                  },
+                },
+                lineStyle: {
+                  width: '3',
+                  color: 'red',
+                },
+                symbol: 'none',
+                silent: true,
+                formatter: 'max',
+              },
+            ],
+          ],
+        },
+      },
+    ],
+  };  
+
+  }
+
+  if (props.chart3) {
+  //   option3.value = getChartOption(
+  //     props.chart3.paramNm,
+  //     props.days,
+  //     props.chart3.paramVal.slice(props.eventDay, props.eventDay + 40),
+  //     { color: '#FAC858' },
+  //     true,
+  //     false,
+  //   );
+
+
+  let labelValue1 = '';
+    let labelValue2 = '';
+    let labelPoint = [];
+
+    labelValue1 = props.days[38];
+    labelValue2 = props.days[53];
+
+    option3.value = {
+    tooltip: {
+      trigger: 'axis',
+    },
+    grid: {
+      top: 23,
+      right: '30',
+      left: '40',
+      width: 'auto',
+      height: 80,
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: props.days,
+      show: false,
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value}',
+      },
+    },
+    series: [
+      {
+        name: props.chart3.paramNm,
+        type: 'line',
+        data: props.chart3.paramVal.slice(props.eventDay, props.eventDay + 40),
+        symbol: 'none',
+        lineStyle: { color: '#FAC858' },
+        markPoint: {
+          symbol: 'rect',
+          symbolSize: [130, 30],
+          padding: [1, 1, 1, 1],
+          data: labelPoint,
+        },
+        markLine: {
+          lineStyle: {
+            type: 'dashed',
+            color: 'red',
+          },
+          data: [
+            [
+              {
+                xAxis: props.days[38],
+                yAxis: 'min',
+                symbol: 'none',
+                silent: true,
+              },
+              {
+                xAxis: props.days[38],
+                yAxis: 'max',
+                label: {
+                  normal: {
+                    show: true,
+                    position: 'start',
+                    formatter: labelValue1,
+                    color: 'black',
+                    distance: 10,
+                  },
+                },
+                lineStyle: {
+                  width: '3',
+                  color: 'black',
+                },
+                symbol: 'none',
+                silent: true,
+                formatter: 'max',
+              },
+            ],
+            [
+              {
+                xAxis: props.days[53],
+                yAxis: 'min',
+                symbol: 'none',
+                silent: true,
+              },
+              {
+                xAxis: props.days[53],
+                yAxis: 'max',
+                label: {
+                  normal: {
+                    show: true,
+                    position: 'start',
+                    formatter: labelValue2,
+                    color: 'red',
+                    distance: 10,
+                  },
+                },
+                lineStyle: {
+                  width: '3',
+                  color: 'red',
+                },
+                symbol: 'none',
+                silent: true,
+                formatter: 'max',
+              },
+            ],
+          ],
+        },
+      },
+    ],
+  };  
+
+  }
+});
+
 
 onMounted(async () => {});
 </script>

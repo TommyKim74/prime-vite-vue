@@ -8,7 +8,7 @@ export const PredictionService = {
         grade: '보통',
         pRate: '94',
         pModel: 'C_R01',
-        pFeature: 'Vibration, Pressure, Motor Current, IGV Position',
+        pFeature: 'Shaft Vibration, Motor Current, IGV Position, Pressure ',
       },
     ];
   },

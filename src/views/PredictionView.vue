@@ -117,7 +117,15 @@
             <!--버튼-->
             <div flex justify-content-start surface-card gap-3>
               <!-- <Button label="즐겨찾기" size="small" severity="help" class="w-6rem mr-2" /> -->
-              <Button label="조회" size="small" class="w-6rem" />
+              <div flex justify-content-start surface-card gap-3>
+                <!-- <Button label="즐겨찾기" size="small" severity="help" class="w-6rem mr-2" /> -->
+                <Button
+                  label="조회"
+                  size="small"
+                  class="w-6rem"
+                  @click="search"
+                />
+              </div>
             </div>
           </div>
           <!--필터-->
@@ -147,11 +155,19 @@
                     </div>
                   </template>
                   <Column
-                    field="predictDay"
                     header="예측 발생 일자"
                     headerStyle="text-align:center;width:250px"
                     bodyStyle="text-align:center;"
                   >
+                  <template #body>
+                  <div
+                    class="flex justify-content-center align-content-center align-items-center"
+                  >
+                    <span class="cursor-pointer font-bold"
+                      >{{ days[38] }} 12:11:45</span
+                    >
+                  </div>
+                </template>                  
                   </Column>
                   <Column
                     field="pType"
@@ -223,13 +239,13 @@
                     Factor Analysis
                   </div>
                 </div>
-                <PredictionAnalysisResultEchart
+                <PredictionEchart
                   :chart1="chart1"
                   :chart2="chart2"
                   :chart3="chart3"
                   :days="days"
                   :eventDay="eventDay"
-                ></PredictionAnalysisResultEchart>
+                ></PredictionEchart>
               </div>
               <!--Factor Analysis-->
             </Fieldset>
@@ -243,9 +259,10 @@
 <script setup>
 import TopMenu from '@/layouts/TopMenu.vue';
 import PredictionMenu from '@/layouts/PredictionMenu.vue';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, getCurrentInstance } from 'vue';
 import { PredictionService } from '@/service/PredictionService';
-import PredictionAnalysisResultEchart from '@/views/chart/PredictionAnalysisResultEchart.vue';
+import PredictionEchart from '@/views/chart/PredictionEchart.vue';
+import { chartDataStore } from '@/stores/Chart';
 
 // import { chartDataStore } from '@/stores/Chart';
 
@@ -259,25 +276,32 @@ const chart3 = ref();
 const days = ref();
 const eventDay = ref();
 
-eventDay.value = proxy.$cmm.randomNumber(1, 900);
-// days.value = chartStore.chartDayList.slice(eventDay.value, eventDay.value + 60);
+const { proxy } = getCurrentInstance();
+const chartStore = chartDataStore();
 
-// [chart1.value, chart2.value, chart3.value] = chartStore.getFactorAnalysis('CF', 'ETC_FAB_COF_001');
+eventDay.value = proxy.$cmm.randomNumber(800, 900);
+console.log(eventDay.value);
+days.value = chartStore.chartDayList.slice(eventDay.value, eventDay.value + 60);
 
-// if(chart1.value) {
-//     chart1.value.score = proxy.$cmm.randomNumber(70, 100);
-//     chart1.value.weight = proxy.$cmm.randomNumber(50, 100);
-// }
+[chart1.value, chart2.value, chart3.value] = chartStore.getFactorAnalysis(
+  'CF',
+  '코팅기',
+);
 
-// if(chart2.value) {
-//   chart2.value.score = proxy.$cmm.randomNumber(30, 70);
-//   chart2.value.weight = proxy.$cmm.randomNumber(10, 50);
-// }
+if (chart1.value) {
+  chart1.value.score = proxy.$cmm.randomNumber(70, 100);
+  chart1.value.weight = proxy.$cmm.randomNumber(50, 100);
+}
 
-// if(chart3.value) {
-//   chart3.value.score = proxy.$cmm.randomNumber(30, 70);
-//   chart3.value.weight = proxy.$cmm.randomNumber(10, 50);
-// }
+if (chart2.value) {
+  chart2.value.score = proxy.$cmm.randomNumber(30, 70);
+  chart2.value.weight = proxy.$cmm.randomNumber(10, 50);
+}
+
+if (chart3.value) {
+  chart3.value.score = proxy.$cmm.randomNumber(30, 70);
+  chart3.value.weight = proxy.$cmm.randomNumber(10, 50);
+}
 
 onMounted(() => {
   PredictionService.getPredictionMini().then(
