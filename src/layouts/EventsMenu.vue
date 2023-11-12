@@ -5,7 +5,7 @@
       <span class="font-bold">이상발생실적</span>
     </div>
     <ul class="list-none pl-3 m-0">
-      <li class="flex overflow-hidden">
+      <li class="flex overflow-hidden" @click="goPage('event')">
         <div
           class="surface-200 flex flex-column align-items-center justify-content-center z-1"
           style="width: 2px"
@@ -25,7 +25,7 @@
           <span class="font-medium">Alert/Event</span>
         </a>
       </li>
-      <li class="flex overflow-hidden">
+      <li class="flex overflow-hidden" @click="goPage('history')">
         <div
           class="surface-200 flex flex-column align-items-center justify-content-center z-1"
           style="width: 2px"
@@ -71,7 +71,14 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
 const activeTab1 = ref(0);
+
+const router = useRouter();
+const goPage = (path) => {
+    router.push(path);
+ }  
 </script>
 
 <style lang="scss" scoped></style>

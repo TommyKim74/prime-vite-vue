@@ -102,7 +102,7 @@
                   class="flex justify-content-between align-content-center mt-3 px-5 column-gap-3"
                 >
                   <div
-                    class="flex-initial w-full md:w-25rem flex justify-content-center align-content-center"
+                    class="flex-initial w-full md:w-25rem flex justify-content-center align-content-center p-5 mr-5"
                   >
                     <!-- <Image src="images/1.png" alt="Image" width="250" /> -->
 

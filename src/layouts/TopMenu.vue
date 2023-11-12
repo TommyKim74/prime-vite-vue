@@ -40,16 +40,16 @@
       <ul
         class="list-none p-0 m-0 flex lg:align-items-center select-none flex-column lg:flex-row"
       >
-        <li class="mr-4 font-bold">
+        <li class="mr-4 font-bold" @click="goPage('status')">
           <a
             v-ripple
             class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-gray-400 hover:text-white hover:bg-gray-800 font-medium border-round cursor-pointer transition-colors transition-duration-150 p-ripple"
-          >
+            >
             <i class="pi pi-desktop mr-2"></i>
             <span class="font-bold">설비운전상태</span>
           </a>
         </li>
-        <li class="mr-4">
+        <li class="mr-4" @click="goPage('performance')">
           <a
             v-ripple
             class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-gray-400 hover:text-white hover:bg-gray-800 font-medium border-round cursor-pointer transition-colors transition-duration-150 p-ripple"
@@ -58,7 +58,7 @@
             <span class="font-bold">설비운전성능</span>
           </a>
         </li>
-        <li class="mr-4">
+        <li class="mr-4"  @click="goPage('event')">
           <a
             v-ripple
             class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-gray-400 hover:text-white hover:bg-gray-800 font-medium border-round cursor-pointer transition-colors transition-duration-150 p-ripple"
@@ -67,7 +67,7 @@
             <span class="font-bold">이상발생실적</span>
           </a>
         </li>
-        <li class="mr-4">
+        <li class="mr-4"  @click="goPage('prediction')">
           <a
             v-ripple
             class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-gray-400 hover:text-white hover:bg-gray-800 font-medium border-round cursor-pointer transition-colors transition-duration-150 p-ripple"
@@ -125,9 +125,19 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
 const props = defineProps({
   id: '0',
 });
+
+
+const router = useRouter();
+const goPage = (path) => {
+    router.push(path);
+ }  
+
 </script>
 
 <style lang="scss" scoped></style>
