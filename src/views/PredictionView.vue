@@ -117,11 +117,7 @@
             <!--버튼-->
             <div flex justify-content-start surface-card gap-3>
               <!-- <Button label="즐겨찾기" size="small" severity="help" class="w-6rem mr-2" /> -->
-              <Button
-                label="조회"
-                size="small"
-                class="w-6rem"
-              />
+              <Button label="조회" size="small" class="w-6rem" />
             </div>
           </div>
           <!--필터-->
@@ -257,8 +253,6 @@ const predictiveAnalysis = ref();
 const selectSearchDate2 = ref('2023-10-01');
 const selectSearchDate3 = ref('2023-11-30');
 
-
-
 const chart1 = ref();
 const chart2 = ref();
 const chart3 = ref();
@@ -284,8 +278,6 @@ eventDay.value = proxy.$cmm.randomNumber(1, 900);
 //   chart3.value.score = proxy.$cmm.randomNumber(30, 70);
 //   chart3.value.weight = proxy.$cmm.randomNumber(10, 50);
 // }
-
-
 
 onMounted(() => {
   PredictionService.getPredictionMini().then(
