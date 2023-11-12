@@ -1,7 +1,7 @@
 <template>
   <div class="w-screen h-screen overflow-hidden">
     <div>
-      <TopMenu></TopMenu>
+      <TopMenu :id="2"></TopMenu>
     </div>
     <div class="flex h-full">
       <div class="flex-none" style="width: 270px">

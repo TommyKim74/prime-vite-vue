@@ -1,7 +1,7 @@
 <template>
   <div class="w-screen h-screen overflow-hidden">
     <div>
-      <TopMenu></TopMenu>
+      <TopMenu :id="3"></TopMenu>
     </div>
     <div class="flex h-full">
       <div class="flex-none" style="width: 270px">
@@ -159,15 +159,15 @@
                     headerStyle="text-align:center;width:250px"
                     bodyStyle="text-align:center;"
                   >
-                  <template #body>
-                  <div
-                    class="flex justify-content-center align-content-center align-items-center"
-                  >
-                    <span class="cursor-pointer font-bold"
-                      >{{ days[38] }} 12:11:45</span
-                    >
-                  </div>
-                </template>                  
+                    <template #body>
+                      <div
+                        class="flex justify-content-center align-content-center align-items-center"
+                      >
+                        <span class="cursor-pointer font-bold"
+                          >{{ days[38] }} 12:11:45</span
+                        >
+                      </div>
+                    </template>
                   </Column>
                   <Column
                     field="pType"

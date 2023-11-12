@@ -44,9 +44,16 @@
           <a
             v-ripple
             class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-gray-400 hover:text-white hover:bg-gray-800 font-medium border-round cursor-pointer transition-colors transition-duration-150 p-ripple"
+          >
+            <i
+              class="pi pi-desktop mr-2"
+              :class="{ 'text-yellow-300': props.id === 0 }"
+            ></i>
+            <span
+              class="font-bold"
+              :class="{ 'text-yellow-300': props.id === 0 }"
+              >설비운전상태</span
             >
-            <i class="pi pi-desktop mr-2"></i>
-            <span class="font-bold">설비운전상태</span>
           </a>
         </li>
         <li class="mr-4" @click="goPage('performance')">
@@ -54,26 +61,47 @@
             v-ripple
             class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-gray-400 hover:text-white hover:bg-gray-800 font-medium border-round cursor-pointer transition-colors transition-duration-150 p-ripple"
           >
-            <i class="pi pi-th-large mr-2"></i>
-            <span class="font-bold">설비운전성능</span>
+            <i
+              class="pi pi-th-large mr-2"
+              :class="{ 'text-yellow-300': props.id === 1 }"
+            ></i>
+            <span
+              class="font-bold"
+              :class="{ 'text-yellow-300': props.id === 1 }"
+              >설비운전성능</span
+            >
           </a>
         </li>
-        <li class="mr-4"  @click="goPage('event')">
+        <li class="mr-4" @click="goPage('event')">
           <a
             v-ripple
             class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-gray-400 hover:text-white hover:bg-gray-800 font-medium border-round cursor-pointer transition-colors transition-duration-150 p-ripple"
           >
-            <i class="pi pi-chart-bar mr-2"></i>
-            <span class="font-bold">이상발생실적</span>
+            <i
+              class="pi pi-chart-bar mr-2"
+              :class="{ 'text-yellow-300': props.id === 2 }"
+            ></i>
+            <span
+              class="font-bold"
+              :class="{ 'text-yellow-300': props.id === 2 }"
+              >이상발생실적</span
+            >
           </a>
         </li>
-        <li class="mr-4"  @click="goPage('prediction')">
+        <li class="mr-4" @click="goPage('prediction')">
           <a
             v-ripple
             class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-gray-400 hover:text-white hover:bg-gray-800 font-medium border-round cursor-pointer transition-colors transition-duration-150 p-ripple"
           >
-            <i class="pi pi-chart-line mr-2"></i>
-            <span class="font-bold">이상예측실적</span>
+            <i
+              class="pi pi-chart-line mr-2"
+              :class="{ 'text-yellow-300': props.id === 3 }"
+            ></i>
+            <span
+              class="font-bold"
+              :class="{ 'text-yellow-300': props.id === 3 }"
+              >이상예측실적</span
+            >
           </a>
         </li>
         <li class="mr-4">
@@ -125,19 +153,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const props = defineProps({
-  id: '0',
+  id: 0,
 });
 
-
 const router = useRouter();
-const goPage = (path) => {
-    router.push(path);
- }  
-
+const goPage = path => {
+  router.push(path);
+};
 </script>
 
 <style lang="scss" scoped></style>
